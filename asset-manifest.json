@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/Let-so/Mi-app-react/static/css/main.5b89579c.chunk.css",
+    "main.js": "/Let-so/Mi-app-react/static/js/main.07f7c04d.chunk.js",
+    "main.js.map": "/Let-so/Mi-app-react/static/js/main.07f7c04d.chunk.js.map",
+    "runtime-main.js": "/Let-so/Mi-app-react/static/js/runtime-main.ba2e62aa.js",
+    "runtime-main.js.map": "/Let-so/Mi-app-react/static/js/runtime-main.ba2e62aa.js.map",
+    "static/js/2.f6009607.chunk.js": "/Let-so/Mi-app-react/static/js/2.f6009607.chunk.js",
+    "static/js/2.f6009607.chunk.js.map": "/Let-so/Mi-app-react/static/js/2.f6009607.chunk.js.map",
+    "static/js/3.0d41a95b.chunk.js": "/Let-so/Mi-app-react/static/js/3.0d41a95b.chunk.js",
+    "static/js/3.0d41a95b.chunk.js.map": "/Let-so/Mi-app-react/static/js/3.0d41a95b.chunk.js.map",
+    "index.html": "/Let-so/Mi-app-react/index.html",
+    "precache-manifest.96f22a9d8642a65fa8ea95bebcdd3d7e.js": "/Let-so/Mi-app-react/precache-manifest.96f22a9d8642a65fa8ea95bebcdd3d7e.js",
+    "service-worker.js": "/Let-so/Mi-app-react/service-worker.js",
+    "static/css/main.5b89579c.chunk.css.map": "/Let-so/Mi-app-react/static/css/main.5b89579c.chunk.css.map",
+    "static/js/2.f6009607.chunk.js.LICENSE.txt": "/Let-so/Mi-app-react/static/js/2.f6009607.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ba2e62aa.js",
+    "static/js/2.f6009607.chunk.js",
+    "static/css/main.5b89579c.chunk.css",
+    "static/js/main.07f7c04d.chunk.js"
+  ]
+}
