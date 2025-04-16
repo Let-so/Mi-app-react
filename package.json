@@ -2,7 +2,7 @@
   "name": "mi-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://github.com/Let-so/Mi-app-react",
+  "homepage": "https://Let-so.github.io/Mi-app-react",
   "dependencies": {
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
