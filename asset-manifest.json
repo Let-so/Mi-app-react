@@ -1,24 +1,16 @@
 {
   "files": {
-    "main.css": "/Mi-app-react/static/css/main.5b89579c.chunk.css",
-    "main.js": "/Mi-app-react/static/js/main.07f7c04d.chunk.js",
-    "main.js.map": "/Mi-app-react/static/js/main.07f7c04d.chunk.js.map",
-    "runtime-main.js": "/Mi-app-react/static/js/runtime-main.03139764.js",
-    "runtime-main.js.map": "/Mi-app-react/static/js/runtime-main.03139764.js.map",
-    "static/js/2.f6009607.chunk.js": "/Mi-app-react/static/js/2.f6009607.chunk.js",
-    "static/js/2.f6009607.chunk.js.map": "/Mi-app-react/static/js/2.f6009607.chunk.js.map",
-    "static/js/3.0d41a95b.chunk.js": "/Mi-app-react/static/js/3.0d41a95b.chunk.js",
-    "static/js/3.0d41a95b.chunk.js.map": "/Mi-app-react/static/js/3.0d41a95b.chunk.js.map",
+    "main.css": "/Mi-app-react/static/css/main.f855e6bc.css",
+    "main.js": "/Mi-app-react/static/js/main.1f339a6b.js",
+    "static/js/488.735449ee.chunk.js": "/Mi-app-react/static/js/488.735449ee.chunk.js",
+    "static/media/logo.svg": "/Mi-app-react/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/Mi-app-react/index.html",
-    "precache-manifest.a13dc03c1281e0057a676d63a58ffccf.js": "/Mi-app-react/precache-manifest.a13dc03c1281e0057a676d63a58ffccf.js",
-    "service-worker.js": "/Mi-app-react/service-worker.js",
-    "static/css/main.5b89579c.chunk.css.map": "/Mi-app-react/static/css/main.5b89579c.chunk.css.map",
-    "static/js/2.f6009607.chunk.js.LICENSE.txt": "/Mi-app-react/static/js/2.f6009607.chunk.js.LICENSE.txt"
+    "main.f855e6bc.css.map": "/Mi-app-react/static/css/main.f855e6bc.css.map",
+    "main.1f339a6b.js.map": "/Mi-app-react/static/js/main.1f339a6b.js.map",
+    "488.735449ee.chunk.js.map": "/Mi-app-react/static/js/488.735449ee.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.03139764.js",
-    "static/js/2.f6009607.chunk.js",
-    "static/css/main.5b89579c.chunk.css",
-    "static/js/main.07f7c04d.chunk.js"
+    "static/css/main.f855e6bc.css",
+    "static/js/main.1f339a6b.js"
   ]
 }
