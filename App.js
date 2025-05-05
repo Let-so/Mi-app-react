@@ -1,17 +1,18 @@
-// App.js
+// App.jsx
 import React, { useState, useEffect } from 'react';
-import PasswordInput from './PasswordInput';
-import PasswordStrengthMeter from './PasswordStrengthMeter';
-import AdvancedOptions from './AdvancedOptions';
+import OpcionesAvanzadas from './OpcionesAvanzadas';
+import EntradaContrasena from './EntradaContrasena';
+import MedidorFortaleza from './MedidorFortaleza';
 
-const App = () => {
-  // Estado principal: contraseña, visibilidad, parámetros de generación, mensaje de copia
-  const [password, setPassword] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
-  const [strength, setStrength] = useState('');
-  const [copyMessage, setCopyMessage] = useState('');
-  const [showAdvanced, setShowAdvanced] = useState(false);
-  const [options, setOptions] = useState({
+function App() {
+  // Estados principales
+  const [contrasena, setContrasena] = useState('');
+  const [verContrasena, setVerContrasena] = useState(false);
+  const [fortaleza, setFortaleza] = useState('');
+  const [mensajeCopiado, setMensajeCopiado] = useState('');
+  const [mostrarAvanzado, setMostrarAvanzado] = useState(false);
+
+  const [opciones, setOpciones] = useState({
     length: 8,
     includeLowercase: true,
     includeUppercase: true,
@@ -19,94 +20,93 @@ const App = () => {
     includeSpecial: false,
   });
 
-  // Función para evaluar la fortaleza de la contraseña
-  const evaluateStrength = (pwd) => {
-    if (pwd.length < 6) {
-      return 'Poco segura';
-    }
-    const hasLower = /[a-z]/.test(pwd);
-    const hasUpper = /[A-Z]/.test(pwd);
-    const hasNumber = /[0-9]/.test(pwd);
-    const hasSpecial = /[^A-Za-z0-9]/.test(pwd);
-    
-    if (pwd.length >= 8 && hasLower && hasUpper && hasNumber && hasSpecial) {
+  // Función para evaluar la seguridad de la contraseña
+  function evaluarFortaleza(pwd) {
+    if (pwd.length < 6) return 'Poco segura';
+
+    const tieneMinus = /[a-z]/.test(pwd);
+    const tieneMayus = /[A-Z]/.test(pwd);
+    const tieneNum = /[0-9]/.test(pwd);
+    const tieneEspecial = /[^A-Za-z0-9]/.test(pwd);
+
+    if (pwd.length >= 8 && tieneMinus && tieneMayus && tieneNum && tieneEspecial) {
       return 'Muy segura';
-    } else if (pwd.length >= 6 && ((hasLower && hasNumber) || (hasUpper && hasNumber))) {
+    } else if (pwd.length >= 6 && ((tieneMinus && tieneNum) || (tieneMayus && tieneNum))) {
       return 'Segura';
     } else {
       return 'Poco segura';
     }
-  };
+  }
 
-  // Actualizar fortaleza cuando la contraseña cambia
+  // Actualizar fortaleza al cambiar la contraseña
   useEffect(() => {
-    setStrength(evaluateStrength(password));
-  }, [password]);
+    setFortaleza(evaluarFortaleza(contrasena));
+  }, [contrasena]);
 
-  // Función para copiar la contraseña al portapapeles
-  const copyToClipboard = () => {
-    navigator.clipboard.writeText(password)
+  // Copiar al portapapeles
+  function copiar() {
+    navigator.clipboard.writeText(contrasena)
       .then(() => {
-        setCopyMessage('¡Contraseña copiada!');
-        setTimeout(() => setCopyMessage(''), 3000);
+        setMensajeCopiado('¡Contraseña copiada!');
+        setTimeout(() => setMensajeCopiado(''), 3000);
       })
       .catch(() => {
-        setCopyMessage('Error al copiar');
-        setTimeout(() => setCopyMessage(''), 3000);
+        setMensajeCopiado('Error al copiar');
+        setTimeout(() => setMensajeCopiado(''), 3000);
       });
-  };
+  }
 
-  // Función para generar una contraseña aleatoria
-  const generatePassword = () => {
-    const { length, includeLowercase, includeUppercase, includeNumbers, includeSpecial } = options;
-    let charset = '';
-    if (includeLowercase) charset += 'abcdefghijklmnopqrstuvwxyz';
-    if (includeUppercase) charset += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    if (includeNumbers) charset += '0123456789';
-    if (includeSpecial) charset += '!@#$%^&*()_+-=[]{}|;:,.<>?';
-    if (charset === '') return ''; // Evitar cadena vacía
-    let generated = '';
+  // Generar contraseña aleatoria
+  function generarContrasena() {
+    const { length, includeLowercase, includeUppercase, includeNumbers, includeSpecial } = opciones;
+    let caracteres = '';
+    if (includeLowercase) caracteres += 'abcdefghijklmnopqrstuvwxyz';
+    if (includeUppercase) caracteres += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    if (includeNumbers) caracteres += '0123456789';
+    if (includeSpecial) caracteres += '!@#$%^&*()_+-=[]{}|;:,.<>?';
+
+    if (caracteres === '') return;
+
+    let generada = '';
     for (let i = 0; i < length; i++) {
-      const randomIndex = Math.floor(Math.random() * charset.length);
-      generated += charset[randomIndex];
+      const indice = Math.floor(Math.random() * caracteres.length);
+      generada += caracteres[indice];
     }
-    setPassword(generated);
-  };
+
+    setContrasena(generada);
+  }
 
   return (
     <div style={{ maxWidth: '500px', margin: '2rem auto', padding: '1rem', border: '1px solid #ccc', borderRadius: '5px' }}>
       <h1>Fortaleza de Contraseña</h1>
-      {/* Componente de entrada de contraseña */}
-      <PasswordInput 
-        password={password} 
-        setPassword={setPassword} 
-        showPassword={showPassword} 
-        setShowPassword={setShowPassword} 
-      />
-      
-      {/* Botón para evaluar la fortaleza (también se actualiza automáticamente al escribir) */}
-      <PasswordStrengthMeter strength={strength} />
 
-      {/* Botón para copiar la contraseña */}
-      <button onClick={copyToClipboard} style={{ marginTop: '1rem' }}>
+      <EntradaContrasena 
+        password={contrasena}
+        setPassword={setContrasena}
+        showPassword={verContrasena}
+        setShowPassword={setVerContrasena}
+      />
+
+      <MedidorFortaleza strength={fortaleza} />
+
+      <button onClick={copiar} style={{ marginTop: '1rem' }}>
         Copiar al portapapeles
       </button>
-      {copyMessage && <p style={{ color: 'green' }}>{copyMessage}</p>}
+      {mensajeCopiado && <p style={{ color: 'green' }}>{mensajeCopiado}</p>}
 
-      {/* Botón para generar una contraseña aleatoria */}
-      <button onClick={generatePassword} style={{ marginTop: '1rem' }}>
+      <button onClick={generarContrasena} style={{ marginTop: '1rem' }}>
         Generar contraseña aleatoria
       </button>
 
-      {/* Botón para mostrar/ocultar panel avanzado */}
-      <button onClick={() => setShowAdvanced(!showAdvanced)} style={{ marginTop: '1rem' }}>
-        {showAdvanced ? 'Ocultar Opciones Avanzadas' : 'Mostrar Opciones Avanzadas'}
+      <button onClick={() => setMostrarAvanzado(!mostrarAvanzado)} style={{ marginTop: '1rem' }}>
+        {mostrarAvanzado ? 'Ocultar Opciones Avanzadas' : 'Mostrar Opciones Avanzadas'}
       </button>
 
-      {/* Panel avanzado para configuración de generación de contraseña */}
-      {showAdvanced && <AdvancedOptions options={options} setOptions={setOptions} />}
+      {mostrarAvanzado && (
+        <OpcionesAvanzadas opciones={opciones} setOpciones={setOpciones} />
+      )}
     </div>
   );
-};
+}
 
 export default App;

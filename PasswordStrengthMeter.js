@@ -1,12 +1,12 @@
-// PasswordStrengthMeter.js
+// MedidorFortaleza.jsx
 import React from 'react';
 
-const PasswordStrengthMeter = ({ strength }) => {
+function MedidorFortaleza({ strength }) {
   return (
     <div style={{ marginTop: '1rem' }}>
       <strong>Fortaleza:</strong> {strength}
     </div>
   );
-};
+}
 
-export default PasswordStrengthMeter;
+export default MedidorFortaleza;

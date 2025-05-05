@@ -1,7 +1,15 @@
-// PasswordInput.js
+// EntradaContrasena.jsx
 import React from 'react';
 
-const PasswordInput = ({ password, setPassword, showPassword, setShowPassword }) => {
+function EntradaContrasena({ password, setPassword, showPassword, setShowPassword }) {
+  function manejarCambio(e) {
+    setPassword(e.target.value);
+  }
+
+  function alternarVisibilidad() {
+    setShowPassword(!showPassword);
+  }
+
   return (
     <div>
       <label>Contraseña:</label>
@@ -9,15 +17,15 @@ const PasswordInput = ({ password, setPassword, showPassword, setShowPassword })
         <input 
           type={showPassword ? 'text' : 'password'} 
           value={password} 
-          onChange={(e) => setPassword(e.target.value)} 
+          onChange={manejarCambio} 
           style={{ width: '100%', padding: '0.5rem', marginTop: '0.5rem' }}
         />
-        <button onClick={() => setShowPassword(!showPassword)} style={{ marginLeft: '0.5rem' }}>
+        <button onClick={alternarVisibilidad} style={{ marginLeft: '0.5rem' }}>
           {showPassword ? 'Ocultar' : 'Mostrar'}
         </button>
       </div>
     </div>
   );
-};
+}
 
-export default PasswordInput;
+export default EntradaContrasena;

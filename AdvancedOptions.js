@@ -1,77 +1,84 @@
-// AdvancedOptions.js
+// OpcionesAvanzadas.jsx
 import React from 'react';
 
-const AdvancedOptions = ({ options, setOptions }) => {
+function OpcionesAvanzadas({ opciones, setOpciones }) {
 
-  // Función para actualizar las opciones
-  const handleChange = (e) => {
-    const { name, type, checked, value } = e.target;
-    setOptions({
-      ...options,
-      [name]: type === 'checkbox' ? checked : parseInt(value)
-    });
-  };
+  function cambiarCasilla(e) {
+    const { name, checked } = e.target;
+    setOpciones({ ...opciones, [name]: checked });
+  }
+
+  function cambiarLargo(e) {
+    setOpciones({ ...opciones, length: parseInt(e.target.value) });
+  }
 
   return (
-    <div style={{ marginTop: '1rem', padding: '1rem', border: '1px solid #ddd', borderRadius: '5px' }}>
+    <div style={{ border: '1px solid #ccc', padding: '1rem', borderRadius: '5px' }}>
       <h3>Opciones Avanzadas</h3>
+
       <div>
-        <label>Largo de la contraseña:</label>
-        <input 
-          type="number" 
-          name="length" 
-          min="4" 
-          value={options.length} 
-          onChange={handleChange}
-          style={{ marginLeft: '0.5rem', width: '50px' }}
-        />
+        <label>
+          Largo de la contraseña: 
+          <input 
+            type="number" 
+            name="length" 
+            value={opciones.length} 
+            min="4" 
+            onChange={cambiarLargo} 
+            style={{ marginLeft: '0.5rem', width: '50px' }}
+          />
+        </label>
       </div>
+
       <div>
         <label>
           <input 
             type="checkbox" 
             name="includeLowercase" 
-            checked={options.includeLowercase} 
-            onChange={handleChange} 
+            checked={opciones.includeLowercase} 
+            onChange={cambiarCasilla} 
           />
-          Incluir letras minúsculas
+          Incluir minúsculas
         </label>
       </div>
+
       <div>
         <label>
           <input 
             type="checkbox" 
             name="includeUppercase" 
-            checked={options.includeUppercase} 
-            onChange={handleChange} 
+            checked={opciones.includeUppercase} 
+            onChange={cambiarCasilla} 
           />
-          Incluir letras mayúsculas
+          Incluir mayúsculas
         </label>
       </div>
+
       <div>
         <label>
           <input 
             type="checkbox" 
             name="includeNumbers" 
-            checked={options.includeNumbers} 
-            onChange={handleChange} 
+            checked={opciones.includeNumbers} 
+            onChange={cambiarCasilla} 
           />
           Incluir números
         </label>
       </div>
+
       <div>
         <label>
           <input 
             type="checkbox" 
             name="includeSpecial" 
-            checked={options.includeSpecial} 
-            onChange={handleChange} 
+            checked={opciones.includeSpecial} 
+            onChange={cambiarCasilla} 
           />
-          Incluir caracteres especiales
+          Incluir símbolos
         </label>
       </div>
     </div>
   );
-};
+}
 
-export default AdvancedOptions;
+export default OpcionesAvanzadas;
